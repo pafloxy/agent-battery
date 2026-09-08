@@ -22,7 +22,7 @@ from typing import Any
 from ..credentials import CredentialError, build_cli_runtime
 from ..platforms import JsonLineProcess, ProcessError
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 
 
 class QuotaError(Exception):

@@ -4,6 +4,30 @@ Usagebar shows coding-agent usage in a compact GNOME panel or a terminal command
 It uses the provider CLI already signed in on your computer. No Usagebar account,
 daemon, Python package installation, or administrator access is required.
 
+![Illustrative Usagebar panel and first-click dropdown](docs/assets/usagebar-explainer.svg)
+
+The green battery fill is the provider-reported allowance remaining. The blue line
+and reset column show time remaining in that reported window. The first-click menu
+lists the general Codex pool first, then named model pools such as
+`GPT-5.3-Codex-Spark`; a reported 5-hour window appears there beside its own weekly
+window. An elapsed reset time never turns into a full battery until a fresh provider
+read confirms it.
+
+## How It Works
+
+```mermaid
+flowchart LR
+    U[You] --> I[GNOME panel or terminal]
+    I --> H[Usagebar local helper]
+    H --> C[Installed provider CLI]
+    C --> S[Provider account service]
+    S --> C --> H --> I
+```
+
+Usagebar makes one short status read through the provider CLI. It starts no coding
+task and sends no data to another monitoring service. The helper keeps only a
+sanitized quota snapshot for the GNOME display; the provider CLI owns login.
+
 ## Quick Start
 
 From this extracted folder:

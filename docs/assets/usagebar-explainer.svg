@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Usagebar panel and dropdown explainer</title>
+  <desc id="desc">An illustrative GNOME top bar with Usagebar, an arrow to an open menu, and labels describing allowance and reset time.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#edf4ef"/>
+      <stop offset="1" stop-color="#dfe9f4"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1e2733"/>
+      <stop offset="1" stop-color="#111820"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" rx="28" fill="url(#page)"/>
+  <text x="68" y="78" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#152435">Usagebar at a glance</text>
+  <text x="68" y="112" font-family="ui-monospace, monospace" font-size="17" fill="#526579">Illustrative values only: your provider reports the actual windows.</text>
+
+  <g>
+    <rect x="68" y="154" width="500" height="74" rx="18" fill="url(#panel)"/>
+    <text x="94" y="199" font-family="ui-monospace, monospace" font-size="19" fill="#d8e1eb">09:41</text>
+    <text x="218" y="199" font-family="ui-monospace, monospace" font-size="19" font-weight="700" fill="#eaf1f9">/codex</text>
+    <rect x="330" y="178" width="73" height="26" rx="7" fill="none" stroke="#d7e1ed" stroke-width="2"/>
+    <rect x="405" y="185" width="4" height="12" rx="2" fill="#d7e1ed"/>
+    <rect x="335" y="183" width="62" height="16" rx="4" fill="#61d3a8"/>
+    <rect x="425" y="178" width="73" height="26" rx="7" fill="none" stroke="#d7e1ed" stroke-width="2"/>
+    <rect x="500" y="185" width="4" height="12" rx="2" fill="#d7e1ed"/>
+    <rect x="430" y="183" width="55" height="16" rx="4" fill="#61d3a8"/>
+    <rect x="333" y="211" width="69" height="3" rx="1.5" fill="#77b7ff"/>
+    <rect x="428" y="211" width="69" height="3" rx="1.5" fill="#77b7ff"/>
+  </g>
+
+  <g font-family="ui-monospace, monospace">
+    <path d="M318 246 C318 276 318 281 318 310" fill="none" stroke="#31587d" stroke-width="3" stroke-linecap="round"/>
+    <path d="M309 301 L318 314 L327 301" fill="none" stroke="#31587d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="343" y="284" font-size="16" font-weight="700" fill="#31587d">click</text>
+  </g>
+
+  <g>
+    <rect x="146" y="326" width="600" height="295" rx="18" fill="#16202c"/>
+    <text x="180" y="370" font-family="ui-monospace, monospace" font-size="20" font-weight="700" fill="#eff5fb">Usagebar</text>
+    <text x="180" y="401" font-family="ui-monospace, monospace" font-size="14" fill="#aebfd0">WINDOW          LEFT      RESET       LOCAL</text>
+    <line x1="180" y1="419" x2="710" y2="419" stroke="#3a4b5c"/>
+    <text x="180" y="450" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#cbd8e8">Codex general</text>
+    <text x="205" y="478" font-family="ui-monospace, monospace" font-size="16" fill="#edf4fb">Weekly          90%      6d 14h     09/15 06:01</text>
+    <line x1="180" y1="496" x2="710" y2="496" stroke="#3a4b5c"/>
+    <text x="180" y="527" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#cbd8e8">GPT-5.3-Codex-Spark</text>
+    <text x="205" y="555" font-family="ui-monospace, monospace" font-size="16" fill="#edf4fb">5-hour         100%      3h 00m     09/08 12:41</text>
+    <text x="205" y="584" font-family="ui-monospace, monospace" font-size="16" fill="#edf4fb">Weekly         100%      7d 00h     09/15 09:41</text>
+  </g>
+
+  <g font-family="ui-monospace, monospace">
+    <rect x="805" y="166" width="319" height="118" rx="16" fill="#fffdf7" stroke="#bed2c3" stroke-width="2"/>
+    <text x="833" y="207" font-size="18" font-weight="700" fill="#1b6148">Green battery fill</text>
+    <text x="833" y="239" font-size="16" fill="#35485d">reported allowance left</text>
+    <path d="M805 245 C720 245 679 215 505 194" fill="none" stroke="#3d9d74" stroke-width="3" stroke-linecap="round"/>
+    <path d="M517 188 L503 194 L516 201" fill="none" stroke="#3d9d74" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="805" y="330" width="319" height="126" rx="16" fill="#f9fbff" stroke="#bfcee1" stroke-width="2"/>
+    <text x="833" y="371" font-size="18" font-weight="700" fill="#2e6caa">Blue line and reset</text>
+    <text x="833" y="403" font-size="16" fill="#35485d">time remaining in that</text>
+    <text x="833" y="428" font-size="16" fill="#35485d">reported window</text>
+    <path d="M805 411 C737 421 690 475 572 550" fill="none" stroke="#4f8fd1" stroke-width="3" stroke-linecap="round"/>
+    <path d="M585 544 L570 551 L581 557" fill="none" stroke="#4f8fd1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="805" y="500" width="319" height="98" rx="16" fill="#fff8ef" stroke="#e1c896" stroke-width="2"/>
+    <text x="833" y="539" font-size="18" font-weight="700" fill="#8a5b13">First-click menu</text>
+    <text x="833" y="570" font-size="16" fill="#35485d">shows each reported pool;</text>
+    <text x="833" y="593" font-size="16" fill="#35485d">unknown stays unknown</text>
+  </g>
+</svg>

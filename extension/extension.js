@@ -231,6 +231,12 @@ class Usagebar {
         this._menuRows.push({window, label: item.label});
     }
 
+    _addBucketHeading(label) {
+        const item = new PopupMenu.PopupMenuItem(label, {reactive: false});
+        item.label.add_style_class_name('codex-battery-menu-bucket');
+        this._button.menu.addMenuItem(item);
+    }
+
     _buildMenu() {
         const menu = this._button.menu;
         menu.removeAll();
@@ -249,19 +255,12 @@ class Usagebar {
                 this._addText('An account spend limit has been reached.');
             this._addText('Window         Left     Reset       Local', true)
                 .add_style_class_name('codex-battery-menu-column-head');
-            // A compact submenu contains model-specific pools instead of mixing them into the main gauges.
+            // Show all reported pools on the first click; general quota stays first.
             const primaryBucketId = this._snapshot.primaryBucketId || providerId(this._config, this._snapshot);
-            for (const bucket of this._snapshot.buckets) {
-                if (!bucket || !Array.isArray(bucket.windows))
-                    continue;
-                let destination = menu;
-                if (bucket.id !== primaryBucketId) {
-                    const submenu = new PopupMenu.PopupSubMenuMenuItem(bucket.name || bucket.id);
-                    menu.addMenuItem(submenu);
-                    destination = submenu.menu;
-                }
+            for (const bucket of Model.menuBuckets(this._snapshot.buckets, primaryBucketId)) {
+                this._addBucketHeading(bucket.id === primaryBucketId ? `${currentService} general` : bucket.name);
                 for (const window of bucket.windows) {
-                    this._addWindowRow(destination, window);
+                    this._addWindowRow(menu, window);
                 }
             }
             if (!this._snapshot.windows.length)

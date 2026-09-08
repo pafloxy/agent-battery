@@ -47,3 +47,28 @@ function visualState(window, now, stale) {
         countdown: countdown(window.resetsAt, now),
     };
 }
+
+/* Return every reported quota pool for the first-click menu, with general first. */
+function menuBuckets(buckets, primaryBucketId) {
+    if (!Array.isArray(buckets))
+        return [];
+    const rows = [];
+    for (const bucket of buckets) {
+        if (!bucket || typeof bucket !== 'object' || !Array.isArray(bucket.windows))
+            continue;
+        const windows = bucket.windows.filter(window => window && typeof window === 'object');
+        if (!windows.length)
+            continue;
+        rows.push({
+            id: typeof bucket.id === 'string' ? bucket.id : '',
+            name: typeof bucket.name === 'string' && bucket.name ? bucket.name : 'Reported quota',
+            windows,
+        });
+    }
+    rows.sort((left, right) => {
+        const leftPrimary = left.id === primaryBucketId ? 0 : 1;
+        const rightPrimary = right.id === primaryBucketId ? 0 : 1;
+        return leftPrimary - rightPrimary || left.name.localeCompare(right.name);
+    });
+    return rows;
+}
