@@ -1,0 +1,10 @@
+.codex-battery-box { spacing: 9px; }
+.codex-battery-brand { font-size: 12px; font-weight: bold; }
+.codex-battery-gauge-box { spacing: 5px; }
+.codex-battery-gauge { width: 53px; height: 23px; }
+.codex-battery-countdown { font-size: 11px; color: #d5d9e0; }
+.codex-battery-warning { color: #f8ba65; font-weight: bold; }
+.codex-battery-menu-heading { font-weight: bold; font-size: 13px; }
+.codex-battery-menu-detail { color: #abb2bf; font-size: 10px; }
+.codex-battery-menu-column-head { font-family: monospace; color: #8f98a8; }
+.codex-battery-menu-row { font-family: monospace; font-size: 11px; }
