@@ -1,6 +1,6 @@
 """OS paths and bounded subprocess transport, independent of any provider or UI.
 
-Example: python3 -m usagebar --demo
+Example: python3 -m agent_battery --demo
 """
 from __future__ import annotations
 

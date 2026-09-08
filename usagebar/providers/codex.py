@@ -182,7 +182,7 @@ def read_quota(config: dict[str, Any]) -> dict[str, Any]:
     server = AppServer(runtime.command, runtime.env, str(runtime.cache_dir))
     try:
         server.request("initialize", {"clientInfo": {
-            "name": "usagebar", "title": "Usagebar", "version": VERSION}})
+            "name": "agent-battery", "title": "Agent Battery", "version": VERSION}})
         server.send({"method": "initialized"})
         auth = server.request("account/read", {"refreshToken": False})
         account = auth.get("account")
@@ -201,7 +201,7 @@ def read_quota(config: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
-    """Run this adapter's diagnostic entry point. Example: python3 -m usagebar.providers.codex --help."""
+    """Run this adapter's diagnostic entry point. Example: python3 -m agent_battery --help."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, help="Local configuration JSON (contains paths, never tokens)")
     args = parser.parse_args()

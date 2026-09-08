@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Claude Code provider for Usagebar.
+"""Claude Code provider for Agent Battery.
 
 Claude Code currently exposes authentication status through its CLI, but this
 provider does not assume a quota-window API. It reports availability and keeps
-the shared Usagebar snapshot shape so the panel can display a truthful unknown
+the shared Agent Battery snapshot shape so the panel can display a truthful unknown
 state until a supported quota source is added.
 
 Example:

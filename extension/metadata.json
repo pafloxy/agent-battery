@@ -1,7 +1,7 @@
 {
   "uuid": "codex-battery@local",
-  "name": "Usagebar",
-  "description": "Horizontal coding-agent usage batteries and reset timers for Ubuntu-like GNOME desktops. Unofficial, local, read-only quota client.",
+  "name": "Agent Battery",
+  "description": "Battery like visual for agent usage quota. Works with Codex/Claude",
   "shell-version": ["42", "43", "44"],
   "version": 4
 }

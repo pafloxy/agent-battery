@@ -7,7 +7,7 @@ DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 DEST="$DATA_HOME/gnome-shell/extensions/$UUID"
 SUPPORTED_SHELL_RE='(^|[[:space:]])(42|43|44)([.]|$)'
-USAGEBAR_PROVIDER="${USAGEBAR_PROVIDER:-codex}"
+AGENT_BATTERY_PROVIDER="${AGENT_BATTERY_PROVIDER:-${USAGEBAR_PROVIDER:-codex}}"
 
 if [[ ${EUID:-$(id -u)} -eq 0 ]]; then
     echo 'Run this as your normal desktop user, without sudo.' >&2
@@ -24,7 +24,7 @@ if [[ ! "$SHELL_VERSION" =~ $SUPPORTED_SHELL_RE ]]; then
     printf 'Detected: %s\nThis build targets GNOME Shell 42-44 legacy extensions only; nothing was installed.\n' "$SHELL_VERSION" >&2
     exit 1
 fi
-case "$USAGEBAR_PROVIDER" in
+case "$AGENT_BATTERY_PROVIDER" in
     codex)
         PROVIDER_BINARY="${CODEX_BINARY:-$(type -P codex || true)}"
         PROVIDER_BINARY_ENV='CODEX_BINARY'
@@ -40,16 +40,16 @@ case "$USAGEBAR_PROVIDER" in
         CACHE_NAMESPACE='usagebar-claude'
         ;;
     *)
-        printf 'Unsupported USAGEBAR_PROVIDER=%s. Use codex or claude.\n' "$USAGEBAR_PROVIDER" >&2
+        printf 'Unsupported AGENT_BATTERY_PROVIDER=%s. Use codex or claude.\n' "$AGENT_BATTERY_PROVIDER" >&2
         exit 1
         ;;
 esac
 if [[ -z "$PROVIDER_BINARY" || ! -x "$PROVIDER_BINARY" ]]; then
     printf '%s CLI was not found on your terminal PATH.\n' "$SERVICE_NAME" >&2
-    printf 'For a custom location: %s=/absolute/path/to/%s USAGEBAR_PROVIDER=%s bash install.sh\n' "$PROVIDER_BINARY_ENV" "$USAGEBAR_PROVIDER" "$USAGEBAR_PROVIDER" >&2
+    printf 'For a custom location: %s=/absolute/path/to/%s AGENT_BATTERY_PROVIDER=%s bash install.sh\n' "$PROVIDER_BINARY_ENV" "$AGENT_BATTERY_PROVIDER" "$AGENT_BATTERY_PROVIDER" >&2
     exit 1
 fi
-export PROVIDER_BINARY SERVICE_NAME PANEL_LABEL CACHE_NAMESPACE USAGEBAR_PROVIDER
+export PROVIDER_BINARY SERVICE_NAME PANEL_LABEL CACHE_NAMESPACE AGENT_BATTERY_PROVIDER
 STAGE="$(mktemp -d)"
 trap 'rm -rf -- "$STAGE"' EXIT
 export CODEX_BATTERY_DEST="$DEST" CODEX_BATTERY_STAGE="$STAGE"
@@ -58,7 +58,7 @@ import json, os
 from pathlib import Path
 stage = Path(os.environ['CODEX_BATTERY_STAGE'])
 previous = Path(os.environ['CODEX_BATTERY_DEST']) / 'config.json'
-provider = os.environ['USAGEBAR_PROVIDER']
+provider = os.environ['AGENT_BATTERY_PROVIDER']
 config = {}
 try:
     old = json.loads(previous.read_text())
@@ -98,7 +98,7 @@ import json, sys
 try:
     print(json.load(open(sys.argv[1])).get('error', 'Quota check failed.'), file=sys.stderr)
 except (OSError, ValueError):
-    print('Usagebar helper failed. Check your provider CLI installation.', file=sys.stderr)
+    print('Agent Battery helper failed. Check your provider CLI installation.', file=sys.stderr)
 PY
     echo 'No extension files were installed. Resolve this error and rerun install.sh.' >&2
     exit 1
@@ -133,7 +133,7 @@ install -m 600 -- "$STAGE/quota.json" "$CACHE_HOME/$CACHE_NAMESPACE/quota.json"
 gnome-extensions enable "$UUID" >/dev/null 2>&1 || true
 cat <<'MSG'
 
-Installed Usagebar for GNOME Shell 42-44.
+Installed Agent Battery for GNOME Shell 42-44.
 
 Save your work, log out of Ubuntu, and log back in. Then run:
   gnome-extensions enable codex-battery@local

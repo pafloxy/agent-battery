@@ -1,10 +1,10 @@
-# Usagebar
+# Agent Battery
 
-Usagebar shows coding-agent usage in a compact GNOME panel or a terminal command.
-It uses the provider CLI already signed in on your computer. No Usagebar account,
+Agent Battery shows coding-agent usage in a compact GNOME panel or a terminal command.
+It uses the provider CLI already signed in on your computer. No Agent Battery account,
 daemon, Python package installation, or administrator access is required.
 
-![Illustrative Usagebar panel and first-click dropdown](docs/assets/usagebar-explainer.svg)
+![Illustrative Agent Battery panel and first-click dropdown](docs/assets/agent-battery-explainer.svg)
 
 The green battery fill is the provider-reported allowance remaining. The blue line
 and reset column show time remaining in that reported window. The first-click menu
@@ -18,13 +18,13 @@ read confirms it.
 ```mermaid
 flowchart LR
     U[You] --> I[GNOME panel or terminal]
-    I --> H[Usagebar local helper]
+    I --> H[Agent Battery local helper]
     H --> C[Installed provider CLI]
     C --> S[Provider account service]
     S --> C --> H --> I
 ```
 
-Usagebar makes one short status read through the provider CLI. It starts no coding
+Agent Battery makes one short status read through the provider CLI. It starts no coding
 task and sends no data to another monitoring service. The helper keeps only a
 sanitized quota snapshot for the GNOME display; the provider CLI owns login.
 
@@ -33,8 +33,8 @@ sanitized quota snapshot for the GNOME display; the provider CLI owns login.
 From this extracted folder:
 
 ```sh
-python3 -m usagebar --demo
-python3 -m usagebar --doctor
+python3 -m agent_battery --demo
+python3 -m agent_battery --doctor
 ```
 
 The demo is synthetic and does not contact a provider. The doctor reports whether
@@ -43,9 +43,9 @@ the `codex` and `claude` commands are available on your PATH without running the
 After signing in through the provider's own CLI, read usage once:
 
 ```sh
-python3 -m usagebar --provider codex
-python3 -m usagebar --provider codex --format json
-python3 -m usagebar --provider claude
+python3 -m agent_battery --provider codex
+python3 -m agent_battery --provider codex --format json
+python3 -m agent_battery --provider claude
 ```
 
 On Windows, use `py -3` in place of `python3`. Python 3.10+ is required.
@@ -60,7 +60,7 @@ work. It reads once and exits; it does not install a background process.
 | Claude Code | Authentication status; quota is shown as unknown |
 
 An API key, token count, API billing amount, and subscription quota are different
-measurements. Usagebar does not substitute one for another. Empty or unknown quota
+measurements. Agent Battery does not substitute one for another. Empty or unknown quota
 means only that the selected provider did not report a general quota window.
 
 ## GNOME Panel
@@ -75,7 +75,7 @@ bash install.sh
 For Claude Code:
 
 ```sh
-USAGEBAR_PROVIDER=claude bash install.sh
+AGENT_BATTERY_PROVIDER=claude bash install.sh
 ```
 
 The installer checks the GNOME version and performs one provider status read
@@ -91,7 +91,7 @@ the provider CLI and its login untouched.
 
 ## Privacy
 
-Usagebar uses only the installed provider CLI. It does not read provider credential
+Agent Battery uses only the installed provider CLI. It does not read provider credential
 files directly, accept raw tokens in its settings, start a coding task, or send
 data to a third-party monitoring service. Provider status reads may use the
 provider's network connection and normal login persistence.
@@ -103,7 +103,7 @@ responses. Configuration containing common secret key names is rejected.
 
 ## Help
 
-If the provider command is missing, run `python3 -m usagebar --doctor`, install the
+If the provider command is missing, run `python3 -m agent_battery --doctor`, install the
 provider using its official instructions, sign in through its normal CLI flow, and
 retry. If the terminal output says signed out, run the provider's login command in
 your own terminal. Do not share credential files or tokens.

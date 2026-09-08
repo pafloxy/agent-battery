@@ -1,4 +1,4 @@
-/* Usagebar: GNOME Shell 42-44, legacy GJS module format. */
+/* Agent Battery: GNOME Shell 42-44, legacy GJS module format. */
 const {St, Gio, GLib, Clutter} = imports.gi;
 const ByteArray = imports.byteArray;
 const Cairo = imports.cairo;
@@ -122,7 +122,7 @@ function paintGauge(area, state) {
     }
 }
 
-class Usagebar {
+class AgentBattery {
     enable() {
         this._alive = true;
         this._process = null;
@@ -242,7 +242,7 @@ class Usagebar {
         menu.removeAll();
         this._menuRows = [];
         const currentService = serviceName(this._config, this._snapshot);
-        this._addText(`${currentService} Usagebar`).add_style_class_name('codex-battery-menu-heading');
+        this._addText(`${currentService} Agent Battery`).add_style_class_name('codex-battery-menu-heading');
         if (this._snapshot) {
             const meta = [this._snapshot.plan ? `Plan ${this._snapshot.plan}` : '', this._snapshot.status || '']
                 .filter(text => text.length)
@@ -329,7 +329,7 @@ class Usagebar {
                 try {
                     const [, output] = proc.communicate_utf8_finish(result);
                     if (!output || output.length > 128 * 1024)
-                        throw new Error('Usagebar helper returned no usable data. Re-run install.sh.');
+                        throw new Error('Agent Battery helper returned no usable data. Re-run install.sh.');
                     const data = JSON.parse(output);
                     if (!data.ok)
                         throw new Error(data.error || 'Usage check failed.');
@@ -351,7 +351,7 @@ class Usagebar {
         } catch (_) {
             this._process = null;
             this._cancellable = null;
-            this._error = 'Could not start the Usagebar helper. Re-run install.sh.';
+            this._error = 'Could not start the Agent Battery helper. Re-run install.sh.';
             this._renderPanel();
             this._updateMenuText();
         }
@@ -386,5 +386,5 @@ class Usagebar {
 }
 
 function init() {
-    return new Usagebar();
+    return new AgentBattery();
 }

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Resolve provider CLI runtimes without storing user secrets.
 
-The Usagebar extension is shipped to end users, so this module treats raw tokens
+The Agent Battery extension is shipped to end users, so this module treats raw tokens
 and API keys as out of scope for `config.json`. Users authenticate with each
-provider's own CLI, and Usagebar records only executable paths, config-home
+provider's own CLI, and Agent Battery records only executable paths, config-home
 locations, and a terminal PATH captured by the installer.
 
 Example:
@@ -81,7 +81,7 @@ def reject_inline_secrets(config: dict[str, Any]) -> None:
     found = sorted(lowered.intersection(SECRET_CONFIG_KEYS))
     if found:
         raise CredentialError(
-            "Usagebar config must not contain raw secrets. Use the provider CLI login flow instead."
+            "Agent Battery config must not contain raw secrets. Use the provider CLI login flow instead."
         )
     for value in config.values():
         if isinstance(value, dict):
@@ -132,7 +132,7 @@ def build_cli_runtime(
     default_home: str,
     cache_namespace: str,
 ) -> CliRuntime:
-    """Build a provider runtime from non-secret Usagebar configuration.
+    """Build a provider runtime from non-secret Agent Battery configuration.
 
     Example:
         runtime = build_cli_runtime(

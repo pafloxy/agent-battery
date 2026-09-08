@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Dispatch Usagebar quota reads to the configured provider.
+"""Dispatch Agent Battery quota reads to the configured provider.
 
 Example:
-    python3 -m usagebar --config config.json --format json
+    python3 -m agent_battery --config config.json --format json
 """
 from __future__ import annotations
 

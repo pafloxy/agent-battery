@@ -17,5 +17,5 @@ PY
 fi
 rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}/codex-battery"
 rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}/usagebar-claude"
-echo 'Usagebar removed. Your provider CLI installations and logins were left alone.'
+echo 'Agent Battery removed. Your provider CLI installations and logins were left alone.'
 echo 'Any installer backups in the data directory were retained.'

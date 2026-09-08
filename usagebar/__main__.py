@@ -1,10 +1,10 @@
-"""Portable Usagebar CLI, using only Python's standard library.
+"""Portable Agent Battery CLI, using only Python's standard library.
 
 Examples (repository root):
-    python3 -m usagebar --demo
-    python3 -m usagebar --provider codex --format json
-    python3 -m usagebar --provider claude
-    python3 -m usagebar --doctor
+    python3 -m agent_battery --demo
+    python3 -m agent_battery --provider codex --format json
+    python3 -m agent_battery --provider claude
+    python3 -m agent_battery --doctor
 """
 from __future__ import annotations
 
@@ -37,9 +37,9 @@ def demo_snapshot() -> dict[str, Any]:
 def render_text(snapshot: dict[str, Any], now: float | None = None) -> str:
     """Render a compact summary with explicit unknowns. Example: render_text(demo_snapshot())."""
     if not snapshot.get("ok"):
-        return "Usagebar: " + snapshot.get("error", "Usage unavailable.")
+        return "Agent Battery: " + snapshot.get("error", "Usage unavailable.")
     now = time.time() if now is None else now
-    lines = [snapshot.get("serviceName", "Usagebar")]
+    lines = [snapshot.get("serviceName", "Agent Battery")]
     stale = now - snapshot.get("updatedAt", 0) > 360
     if stale:
         lines.append("STALE: refresh before relying on these values")

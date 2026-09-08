@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-  <title id="title">Usagebar panel and dropdown explainer</title>
+  <title id="title">Agent Battery panel and dropdown explainer</title>
   <desc id="desc">An illustrative GNOME top bar with Usagebar, an arrow to an open menu, and labels describing allowance and reset time.</desc>
   <defs>
     <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
@@ -12,7 +12,7 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="680" rx="28" fill="url(#page)"/>
-  <text x="68" y="78" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#152435">Usagebar at a glance</text>
+  <text x="68" y="78" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#152435">Agent Battery at a glance</text>
   <text x="68" y="112" font-family="ui-monospace, monospace" font-size="17" fill="#526579">Illustrative values only: your provider reports the actual windows.</text>
 
   <g>
@@ -37,7 +37,7 @@
 
   <g>
     <rect x="146" y="326" width="600" height="295" rx="18" fill="#16202c"/>
-    <text x="180" y="370" font-family="ui-monospace, monospace" font-size="20" font-weight="700" fill="#eff5fb">Usagebar</text>
+    <text x="180" y="370" font-family="ui-monospace, monospace" font-size="20" font-weight="700" fill="#eff5fb">Agent Battery</text>
     <text x="180" y="401" font-family="ui-monospace, monospace" font-size="14" fill="#aebfd0">WINDOW          LEFT      RESET       LOCAL</text>
     <line x1="180" y1="419" x2="710" y2="419" stroke="#3a4b5c"/>
     <text x="180" y="450" font-family="ui-monospace, monospace" font-size="15" font-weight="700" fill="#cbd8e8">Codex general</text>
